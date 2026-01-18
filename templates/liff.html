@@ -10,11 +10,20 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
     <script>
         //==========================LIFF API初始化================================
-        $(document).ready(function() {
-            liff.init({
-                liffId: "2008911742-sH6lZ37J"
-            });
+        $(document).ready(function () {
+            liff.init({ liffId: "2008911742-sH6lZ37J" })
+                .then(() => {
+                    if (!liff.isLoggedIn()) {
+                        liff.login({
+                            redirectUri: "你的 Render LIFF 網址",
+                        });
+                    }
+                })
+                .catch((err) => {
+                    console.log('LIFF init error', err);
+                });
         });
+
         //==========================LIFF API初始化================================
 
         function liff_getOS() {
