@@ -12,6 +12,7 @@ from linebot.models import *
 from message import *
 from new import *
 from Function import *
+
 #======這裡是呼叫的檔案內容=====
 
 #======python的函數庫==========
@@ -69,10 +70,13 @@ def handle_message(event):
     elif '功能列表' in msg:
         message = function_list()
         line_bot_api.reply_message(event.reply_token, message)
-
+    elif '名片' in msg:
+        message = line_card()
+        line_bot_api.reply_message(event.reply_token, message)
     else:
         message = TextSendMessage(text=msg)
         line_bot_api.reply_message(event.reply_token, message)
+
 
 @handler.add(PostbackEvent)
 def handle_message(event):

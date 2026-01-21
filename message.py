@@ -1,5 +1,74 @@
 #這些是LINE官方開放的套件組合透過import來套用這個檔案上
 from linebot.models import *
+from linebot.models import FlexSendMessage
+
+def line_card():
+    contents = {
+        "type": "carousel",
+        "contents": [
+            {
+                "type": "bubble",
+                "hero": {
+                    "type": "image",
+                    "url": "https://i.imgur.com/ZuRTzVj.png",
+                    "aspectRatio": "8:9",
+                    "size": "full"
+                },
+                "body": {
+                    "type": "box",
+                    "layout": "vertical",
+                    "contents": [
+                        {
+                            "type": "text",
+                            "text": "◈ 我發現了一把鏟子\n\n（這裡放你的介紹文字）",
+                            "wrap": True
+                        },
+                        {
+                            "type": "button",
+                            "action": {
+                                "type": "uri",
+                                "label": "❖看看我挖到什麼",
+                                "uri": "https://www.youtube.com/channel/UCpzVAEwEs9AwT2uAOZuxaRQ"
+                            },
+                            "style": "secondary",
+                            "color": "#B5EAEF"
+                        }
+                    ]
+                }
+            },
+            {
+                "type": "bubble",
+                "hero": {
+                    "type": "image",
+                    "url": "https://i.imgur.com/tCGgamM.png",
+                    "size": "full",
+                    "aspectRatio": "8:9"
+                },
+                "body": {
+                    "type": "box",
+                    "layout": "vertical",
+                    "contents": [
+                        {
+                            "type": "text",
+                            "text": "◈ 坑越挖越大洞啦\n\n（第二張介紹文字）",
+                            "wrap": True
+                        },
+                        {
+                            "type": "button",
+                            "action": {
+                                "type": "uri",
+                                "label": "❖訂閱Maso的萬事屋",
+                                "uri": "https://www.youtube.com/channel/UCpzVAEwEs9AwT2uAOZuxaRQ?sub_confirmation=1"
+                            },
+                            "style": "secondary",
+                            "color": "#B5EAEF"
+                        }
+                    ]
+                }
+            }
+        ]
+    }
+    return FlexSendMessage(alt_text="LINE 名片", contents=contents)
 
 #ImagemapSendMessage(組圖訊息)
 def imagemap_message():
